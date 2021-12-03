@@ -49,25 +49,14 @@ public class RecordActivity extends AppCompatActivity {
         trxDesc = findViewById(R.id.trxDesc);
         trxMethodSpinner = findViewById(R.id.trxMethodSpinner);
         trxTypeSpinner = findViewById(R.id.trxTypeSubmit);
+        sp = getSharedPreferences("appPreference",MODE_PRIVATE);
+        accessToken = sp.getString("accessToken","");
 
         submitProgress = findViewById(R.id.progressBarSubmit);
 
         submitProgress.setVisibility(View.GONE);
     }
     public void submitTrx(View view) throws IOException {
-//        //For toogle
-//        if(trxTypeRadio.getCheckedRadioButtonId()==-1)
-//        {
-//            Toast.makeText(getApplicationContext(), "Please select Type", Toast.LENGTH_SHORT).show();
-//        }
-//        else
-//        {
-//            // get selected radio button from radioGroup
-//            int selectedId = trxTypeRadio.getCheckedRadioButtonId();
-//            // find the radiobutton by returned id
-//            RadioButton selectedRadioButton = (RadioButton)findViewById(selectedId);
-//            trxType = selectedRadioButton.getText().toString().toUpperCase();
-//        }
         trxType = trxTypeSpinner.getSelectedItem().toString();
         amount = trxAmount.getText().toString();
         desc = trxDesc.getText().toString();
@@ -77,9 +66,9 @@ public class RecordActivity extends AppCompatActivity {
         String body = "{\"trxType\":\"%s\",\"amount\":\"%s\",\"desc\":\"%s\",\"trxMethod\":\"%s\"}";
         String finalBody = String.format(body, trxType,amount,desc,trxMethod);
         Log.d("Payload",finalBody);
-//        submitProgress.setVisibility(View.VISIBLE);
+        submitProgress.setVisibility(View.VISIBLE);
 
-//        postRequest(baseUrl+"/add",finalBody);
+        submitRecord(baseUrl+"/add",finalBody);
 
         trxAmount.setText(null);
         trxDesc.setText(null);
