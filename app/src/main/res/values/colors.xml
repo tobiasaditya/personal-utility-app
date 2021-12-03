@@ -18,5 +18,18 @@
     <color name="colorTrendingEnd">#96C93D</color>
     <color name="colorDivider">#D6D6D6</color>
 
+    <color name="uiColorPrimary">#131EEA</color>
+    <color name="uiColorPrimaryDark">#131EEA</color>
+    <color name="uiColorAccent">#F13413</color>
+    <color name="uiColorLayerDark">#D6000000</color>
+    <color name="uiColorLayerSemiDark">#D0000000</color>
+    <color name="uiColorTextPrimary">#212121</color>
+    <color name="uiColorTextHint">#808080</color>
+
+
+
+
+
+
 
 </resources>

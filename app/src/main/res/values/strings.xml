@@ -25,6 +25,10 @@
     <string name="sensor">Sensor</string>
     <string name="financial_record">Financial Record</string>
     <string name="record">Record</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
 
     <string-array name="trxType">
         <item>PURCHASE</item>

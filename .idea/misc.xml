@@ -3,16 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/header.xml" value="0.22263513513513514" />
         <entry key="app/src/main/res/drawable/header_background.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/drawable/ic_menu.xml" value="0.22263513513513514" />
+        <entry key="app/src/main/res/drawable/login_background.xml" value="0.22263513513513514" />
+        <entry key="app/src/main/res/drawable/primary_button_background.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/drawable/search_icon_background.xml" value="0.22263513513513514" />
+        <entry key="app/src/main/res/drawable/secondary_button_background.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/drawable/thumb.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/track.xml" value="0.22263513513513514" />
         <entry key="app/src/main/res/drawable/treding_background.xml" value="0.22263513513513514" />
         <entry key="app/src/main/res/drawable/white_rectangle_background.xml" value="0.22263513513513514" />
         <entry key="app/src/main/res/layout/activity_finance.xml" value="0.20945945945945946" />
         <entry key="app/src/main/res/layout/activity_house.xml" value="0.20945945945945946" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_sensor_manage.xml" value="0.264" />
