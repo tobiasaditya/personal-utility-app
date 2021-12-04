@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -30,6 +31,9 @@ public class FinanceActivity extends AppCompatActivity {
     SharedPreferences sp;
     ProgressBar historyProgress;
     String accessToken;
+    TextView totalPurchase;
+    TextView totalIncome;
+    TextView totalNet;
 
 
     //For request response finance history
@@ -59,6 +63,9 @@ public class FinanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finance);
         recyclerView = findViewById(R.id.recyclerView);
         historyProgress = findViewById(R.id.historyProgress);
+        totalPurchase = findViewById(R.id.textTotalPurchase);
+        totalIncome = findViewById(R.id.textTotalIncome);
+        totalNet = findViewById(R.id.textNett);
 
         MyAdapter myAdapter = new MyAdapter(this,listDesc,listAmount,listType,listDate,listMethod,listTrxId,listId);
         recyclerView.setAdapter(myAdapter);
@@ -137,6 +144,21 @@ public class FinanceActivity extends AppCompatActivity {
                                     listTrxId,
                                     listId);
                             recyclerView.setAdapter(myAdapter);
+
+                            totalPurchase.setText(String.format("Rp %,d", sumPuchase));
+                            totalIncome.setText(String.format("Rp %,d", sumIncome));
+                            totalNet.setText(String.format("Rp %,d", nett));
+
+                            if (nett<=0){
+                                totalNet.setTextColor(getResources().getColor(R.color.darkPink));
+                                totalNet.setBackgroundResource(R.color.softPink);
+                            }
+                            else{
+                                totalNet.setTextColor(getResources().getColor(R.color.darkGreen));
+                                totalNet.setBackgroundResource(R.color.softGreen);
+                            }
+
+
 
                         }
                     });
