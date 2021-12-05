@@ -6,6 +6,6 @@ In earlier version for personal transaction, I don't really put any effort on Us
 
 And for IoT, I used an ESP-32 connected to Blynk. As for early version, i still used a telegram bot to receive the data on command.
 
-Then i made a decision to make an app, containing both projects but with better UI and UX on Android.
+Then i made a decision to make an app, containing both projects but with better UI and UX on Android. Learning how to code UI design and theme from online resources. 
 
 This is just a self note.
