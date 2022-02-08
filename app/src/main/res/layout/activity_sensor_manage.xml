@@ -49,7 +49,9 @@
         android:overScrollMode="never"
         android:scrollbars="none"
         app:layout_constraintBottom_toTopOf="@id/viewDivider"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -116,10 +118,10 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="15dp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintTop_toBottomOf="@id/layoutSensor1"
-                app:layout_constraintEnd_toStartOf="@id/layoutStatusLed">
+                app:layout_constraintEnd_toStartOf="@id/layoutStatusLed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutSensor1">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -128,16 +130,15 @@
                     android:text="@string/sensor_d2"
                     android:textColor="@color/colorAccent"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switchLed"
                     android:layout_width="100dp"
                     android:layout_height="70dp"
-                    app:switchMinWidth="100dp"
                     android:thumb="@drawable/thumb"
-                    app:track="@drawable/track">
-                </androidx.appcompat.widget.SwitchCompat>
+                    app:switchMinWidth="100dp"
+                    app:track="@drawable/track"></androidx.appcompat.widget.SwitchCompat>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -146,7 +147,7 @@
                     android:text="VP 0"
                     android:textColor="@color/colorAccent"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -159,9 +160,9 @@
                 android:orientation="vertical"
                 android:padding="15dp"
                 app:layout_constraintDimensionRatio="H, 1:1"
-                app:layout_constraintTop_toBottomOf="@id/layoutSensor1"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/layoutSwitchLed2"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/layoutSensor1">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -170,15 +171,16 @@
                     android:text="@string/output"
                     android:textColor="@color/colorAccent"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageSound"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:padding="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/soundwaves"/>
+                    android:padding="10dp"
+                    android:src="@drawable/soundwaves"
+                    app:tint="@color/gray" />
 
                 <TextView
                     android:id="@+id/textResultMeasurement"
@@ -187,11 +189,95 @@
                     android:gravity="center"
                     android:text="20 cm"
                     android:textSize="20sp"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/layoutTemperature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/white_rectangle_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp"
+                app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintEnd_toStartOf="@id/layoutStatusLed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutSwitchLed2">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/temperature"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageTemperature"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:contentDescription="@string/app_name"
+                    android:padding="10dp"
+                    app:tint="@color/gray"
+                    android:src="@drawable/ic_thermostat" />
+
+                <TextView
+                    android:id="@+id/textTempMeasure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="27\u2103"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutHumidity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/white_rectangle_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp"
+                app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintStart_toStartOf="@id/layoutStatusLed"
+                app:layout_constraintTop_toBottomOf="@id/layoutStatusLed">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Humidity"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageHumidity"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:contentDescription="@string/app_name"
+                    android:padding="10dp"
+                    app:tint="@color/gray"
+                    android:src="@drawable/ic_water_damage" />
+
+                <TextView
+                    android:id="@+id/textHumidMeasure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="80%"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,13 +43,19 @@ public class SensorManageActivity extends AppCompatActivity{
     TextView textHistoryStatus;
     TextView textResultMeasurement;
     TextView textStatus;
+    TextView textTempMeasure;
+    TextView textHumidMeasure;
     ImageView imageSound;
+    ImageView imageTemp;
+    ImageView imageHumid;
     BottomNavigationView bottomNavigationView;
 
     SharedPreferences sp;
     //From esp32
-    float v5 = 0;
+    float v5 = 0; //Ultrasonic
     String v6 = "";
+    float v7 = 0; //Suhu
+    float v8 = 0; //Kelembapan
     int v1 = 0;
 
     @Override
@@ -61,6 +67,10 @@ public class SensorManageActivity extends AppCompatActivity{
         textResultMeasurement = findViewById(R.id.textResultMeasurement);
         textStatus = findViewById(R.id.textStatus);
         imageSound = findViewById(R.id.imageSound);
+        textTempMeasure = findViewById(R.id.textTempMeasure);
+        textHumidMeasure = findViewById(R.id.textHumidMeasure);
+        imageTemp = findViewById(R.id.imageTemperature);
+        imageHumid = findViewById(R.id.imageHumidity);
         sp = getSharedPreferences("appPreference",MODE_PRIVATE);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
@@ -106,6 +116,10 @@ public class SensorManageActivity extends AppCompatActivity{
         });
 
         textHistoryStatus.setText(sp.getString("lastConnection","Unknown"));
+        textTempMeasure.setText(String.valueOf(sp.getFloat("lastTemp",27)) + "\u2103");
+        textHumidMeasure.setText(String.valueOf(sp.getFloat("lastHumid",98)) + "%");
+
+
 
         //Initialize status device
         try {
@@ -174,7 +188,7 @@ public class SensorManageActivity extends AppCompatActivity{
     public void getDeviceData() throws IOException {
         Log.d("Request","Get Device Data");
         OkHttpClient client = new OkHttpClient();
-        String getUrl = "https://blynk.cloud/external/api/get?token="+auth_token+"&v5&v6&v1";
+        String getUrl = "https://blynk.cloud/external/api/get?token="+auth_token+"&v1&v5&v6&v7&v8";
         Request request = new Request.Builder()
                 .url(getUrl)
                 .build();
@@ -199,13 +213,25 @@ public class SensorManageActivity extends AppCompatActivity{
                         sp.edit().putString("lastConnection",v6).apply();
                         sp.edit().putFloat("lastMeasure", v5).apply();
                         sp.edit().putInt("lastLed",v1).apply();
+                        sp.edit().putFloat("lastTemp",v7).apply();
+                        sp.edit().putFloat("lastHumid",v8).apply();
                         String measUltraSound = String.format("%.2f cm",v5);
                         textResultMeasurement.setText(measUltraSound);
+                        String measTemp = String.valueOf(v7) + "\u2103";
+                        String measHumid = String.valueOf(v8) +"%";
+                        textTempMeasure.setText(measTemp);
+                        textHumidMeasure.setText(measHumid);
                         if (v1==1){
                             imageSound.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+                            imageTemp.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+                            imageHumid.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+
                         }
                         else{
-                            imageSound.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+                            imageSound.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+                            imageTemp.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+                            imageHumid.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+
                         }
                         }
                     });
@@ -229,6 +255,8 @@ public class SensorManageActivity extends AppCompatActivity{
             v5 = (float) obj.getDouble("v5");
             v6 = obj.getString("v6");
             v1 = obj.getInt("v1");
+            v7 = (float) obj.getDouble("v7");
+            v8 = (float) obj.getDouble("v8");
         } catch (JSONException e) {
             e.printStackTrace();
         }

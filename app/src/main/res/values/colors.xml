@@ -12,6 +12,9 @@
     <color name="softPink">#FFECEE</color>
     <color name="darkGreen">#00AF36</color>
     <color name="softGreen">#DFF9EC</color>
+    <color name="darkYellow">#ff9400</color>
+    <color name="softYellow">#fff6e6</color>
+    <color name="gray">#ebebeb</color>
     <color name="colorPrimary">#2BCC6F</color>
     <color name="colorPrimaryDark">#2BCC6F</color>
     <color name="colorAccent">#333333</color>

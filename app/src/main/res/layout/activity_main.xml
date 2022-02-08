@@ -176,12 +176,11 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="15dp"
-                android:clickable="true"
                 app:layout_constraintDimensionRatio="H, 1:1"
                 app:layout_constraintEnd_toStartOf="@id/layoutFinance"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layoutGoal"
-                android:focusable="true">
+                android:onClick="startInvestActivity">
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"

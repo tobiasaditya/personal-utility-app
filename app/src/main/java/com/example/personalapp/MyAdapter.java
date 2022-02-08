@@ -67,6 +67,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             holder.text3.setTextColor(context.getResources().getColor(R.color.darkGreen));
             holder.text3.setBackgroundResource(R.color.softGreen);
         }
+        else if (listType.get(position).equals("INVESTMENT")) {
+            holder.text3.setTextColor(context.getResources().getColor(R.color.darkYellow));
+            holder.text3.setBackgroundResource(R.color.softYellow);
+        }
         holder.text4.setText(listDate.get(position).substring(0 , listDate.get(position).indexOf(".")));
 
         holder.text5.setText(listMethod.get(position));

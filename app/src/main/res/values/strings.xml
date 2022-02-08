@@ -30,6 +30,7 @@
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>
     <string name="rp_0">Rp 0</string>
+    <string name="temperature">Temperature</string>
 
     <string-array name="trxType">
         <item>PURCHASE</item>

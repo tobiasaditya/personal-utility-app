@@ -74,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         Intent financeIntent = new Intent(getApplicationContext(),FinanceActivity.class);
         startActivity(financeIntent);
     }
+    public void startInvestActivity(View view){
+        Intent investIntent = new Intent(getApplicationContext(),InvestActivity.class);
+        startActivity(investIntent);
+    }
+
 
 
 }

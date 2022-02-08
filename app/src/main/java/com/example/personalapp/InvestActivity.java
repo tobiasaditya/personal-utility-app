@@ -17,10 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -28,16 +25,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class FinanceActivity extends AppCompatActivity {
+public class InvestActivity extends AppCompatActivity {
     String baseUrl = "https://obider-transaction-service.herokuapp.com/transaction";
     RecyclerView recyclerView;
     SharedPreferences sp;
     ProgressBar historyProgress;
     String accessToken;
-    TextView totalPurchase;
-    TextView totalIncome;
-    TextView totalNet;
-    TextView titleFinance;
+    TextView totalInvest;
 
 
     //For request response finance history
@@ -48,9 +42,7 @@ public class FinanceActivity extends AppCompatActivity {
     String stringDate = "";
     String trxId = null;
     String id = null;
-    int sumPuchase = 0;
-    int sumIncome = 0;
-    int nett = 0;
+    int sumInvest = 0;
 
 
     ArrayList<String> listDesc = new ArrayList<String>();
@@ -64,19 +56,11 @@ public class FinanceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finance);
+        setContentView(R.layout.activity_invest);
+
         recyclerView = findViewById(R.id.recyclerView);
         historyProgress = findViewById(R.id.historyProgress);
-        totalPurchase = findViewById(R.id.textTotalPurchase);
-        totalIncome = findViewById(R.id.textTotalIncome);
-        totalNet = findViewById(R.id.textNett);
-
-        titleFinance = findViewById(R.id.textFinanceActivity);
-
-        DateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
-        Date date = new Date();
-//        Log.d("Month",dateFormat.format(date));
-        titleFinance.setText(dateFormat.format(date));
+        totalInvest = findViewById(R.id.textInvest);
 
         MyAdapter myAdapter = new MyAdapter(this,listDesc,listAmount,listType,listDate,listMethod,listTrxId,listId);
         recyclerView.setAdapter(myAdapter);
@@ -92,16 +76,16 @@ public class FinanceActivity extends AppCompatActivity {
         //Initialize request finance history
         try {
             historyProgress.setVisibility(View.VISIBLE);
-            getFinanceHistory(baseUrl+"/finance");
+            getFinanceHistory(baseUrl+"/investment");
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
     public void historyTrx(View view){
         try {
             historyProgress.setVisibility(View.VISIBLE);
-            getFinanceHistory(baseUrl+"/finance");
+            getFinanceHistory(baseUrl+"/investment");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -156,21 +140,7 @@ public class FinanceActivity extends AppCompatActivity {
                                     listId);
                             recyclerView.setAdapter(myAdapter);
 
-                            totalPurchase.setText(String.format("Rp %,d", sumPuchase));
-                            totalIncome.setText(String.format("Rp %,d", sumIncome));
-                            totalNet.setText(String.format("Rp %,d", nett));
-
-                            if (nett<=0){
-                                totalNet.setTextColor(getResources().getColor(R.color.darkPink));
-                                totalNet.setBackgroundResource(R.color.softPink);
-                            }
-                            else{
-                                totalNet.setTextColor(getResources().getColor(R.color.darkGreen));
-                                totalNet.setBackgroundResource(R.color.softGreen);
-                            }
-
-
-
+                            totalInvest.setText(String.format("Rp %,d", sumInvest));
                         }
                     });
 
@@ -207,9 +177,7 @@ public class FinanceActivity extends AppCompatActivity {
             contentJson = new JSONObject(content);
 
             int n_trx = Integer.parseInt(contentJson.getString("n_data"));
-            sumPuchase = Integer.parseInt(contentJson.getString("total_purchase"));
-            sumIncome = Integer.parseInt(contentJson.getString("total_income"));
-            nett = Integer.parseInt(contentJson.getString("total_net"));
+            sumInvest = Integer.parseInt(contentJson.getString("total_investment"));
 
             JSONArray ja_data = contentJson.getJSONArray("content");
             for(int i=0; i<n_trx; i++) {
