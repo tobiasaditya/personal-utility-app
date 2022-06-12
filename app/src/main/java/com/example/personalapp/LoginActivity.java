@@ -25,7 +25,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    String baseUrl = "https://obider-transaction-service.herokuapp.com/auth";
+//    String baseUrl = "https://obider-transaction-service.herokuapp.com/auth";
+    String baseUrl = "https://obider-transaction-service-v2.herokuapp.com/api/v2/user";
     EditText username;
     EditText password;
     ProgressBar loginProgress;
