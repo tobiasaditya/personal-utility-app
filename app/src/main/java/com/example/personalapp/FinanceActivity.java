@@ -29,7 +29,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class FinanceActivity extends AppCompatActivity {
-    String baseUrl = "https://obider-transaction-service.herokuapp.com/transaction";
+//    String baseUrl = "https://obider-transaction-service.herokuapp.com/transaction";
+    String baseUrl = "https://obider-transaction-service-v2.herokuapp.com/api/v2";
+
     RecyclerView recyclerView;
     SharedPreferences sp;
     ProgressBar historyProgress;
@@ -92,7 +94,7 @@ public class FinanceActivity extends AppCompatActivity {
         //Initialize request finance history
         try {
             historyProgress.setVisibility(View.VISIBLE);
-            getFinanceHistory(baseUrl+"/finance");
+            getFinanceHistory(baseUrl+"/transaction");
         } catch (IOException e) {
             e.printStackTrace();
         }

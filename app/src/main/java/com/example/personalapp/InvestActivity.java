@@ -26,7 +26,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class InvestActivity extends AppCompatActivity {
-    String baseUrl = "https://obider-transaction-service.herokuapp.com/transaction";
+//    String baseUrl = "https://obider-transaction-service.herokuapp.com/transaction";
+    String baseUrl = "https://obider-transaction-service-v2.herokuapp.com/api/v2/transaction";
+
     RecyclerView recyclerView;
     SharedPreferences sp;
     ProgressBar historyProgress;

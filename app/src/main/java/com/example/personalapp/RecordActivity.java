@@ -22,7 +22,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class RecordActivity extends AppCompatActivity {
-    String baseUrl = "https://obider-transaction-service.herokuapp.com/transaction";
+//    String baseUrl = "https://obider-transaction-service.herokuapp.com/transaction";
+    String baseUrl = "https://obider-transaction-service-v2.herokuapp.com/api/v2/transaction";
     //    RadioGroup trxTypeRadio;
     EditText trxAmount;
     EditText trxDesc;
