@@ -52,8 +52,9 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View view) throws Exception {
         loginProgress.setVisibility(View.VISIBLE);
         String body = "{\"username\":\"%s\",\"password\":\"%s\"}";
-        String finalBody = String.format(body, username.getText().toString(),password.getText().toString());
+        String finalBody = String.format(body, username.getText().toString(),scee.encryptString(password.getText().toString(),"PASSWORD"));
         loginRequest(baseUrl+"/login",finalBody);
+//        Log.i("LOGIN",finalBody);
     }
     void loginRequest(String postUrl, String body) throws IOException {
 
