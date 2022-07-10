@@ -49,11 +49,11 @@ public class scee {
         System.arraycopy(ciphertextAndNonce, 0, ciphertextAndNonceAndSalt, salt.length, ciphertextAndNonce.length);
 
         // Return as base64 string.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return Base64.getEncoder().encodeToString(ciphertextAndNonceAndSalt);
-        } else{
-            return String.valueOf(android.util.Base64.decode(ciphertextAndNonceAndSalt, android.util.Base64.DEFAULT));
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            return Base64.getEncoder().encodeToString(ciphertextAndNonceAndSalt);
+//        } else{
+        return android.util.Base64.encodeToString(ciphertextAndNonceAndSalt, android.util.Base64.NO_WRAP);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
