@@ -29,7 +29,7 @@ public class scee {
     private final static int ALGORITHM_KEY_SIZE = 128;
     private final static String PBKDF2_NAME = "PBKDF2WithHmacSHA1";
     private final static int PBKDF2_SALT_SIZE = 16;
-    private final static int PBKDF2_ITERATIONS = 32767;
+    private final static int PBKDF2_ITERATIONS = 10;
 
     public static String encryptString(String plaintext, String password) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
         // Generate a 128-bit salt using a CSPRNG.
